@@ -11,11 +11,11 @@ class ArgsParser
       option = get_option(args[index])
       index += 1
       next if option.nil?
+
       if index < length
-        value = args[index]
-        next_option = get_option(value)
+        next_option = get_option(args[index])
         if next_option.nil?
-          options[option] = value
+          options[option] = args[index]
           index += 1
         else
           options[option] = @default

@@ -1,4 +1,4 @@
-require_relative '../lib/args-parser'
+require_relative '../lib/args_parser'
 
 describe ArgsParser do
   let(:parser) { ArgsParser.new }
@@ -20,7 +20,7 @@ describe ArgsParser do
   end
 
   it 'sets option to the default when value is not provided' do
-    expect((ArgsParser.new('default')).parse(['--options'])['options']).to eq 'default'
+    expect((ArgsParser.new 'default').parse(['--options'])['options']).to eq 'default'
   end
 
   it 'sets option to value when value provided' do
@@ -29,7 +29,7 @@ describe ArgsParser do
 
   it 'correctly parses an array of options' do
     args = ['--options', 'none', '-v', '-cols', '4', '--rows', '4', '--mute']
-    expected = {'options' => 'none', 'v' => 'present', 'cols' => '4', 'rows' => '4', 'mute' => 'present'}
+    expected = { 'options' => 'none', 'v' => 'present', 'cols' => '4', 'rows' => '4', 'mute' => 'present' }
     expect(parser.parse(args)).to eq expected
   end
 end
