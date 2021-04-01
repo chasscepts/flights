@@ -10,7 +10,7 @@ class SiteParser
     @selector = selector
   end
 
-  def sections
+  def jobs
     if @jobs.nil?
       @jobs = []
       sections = fetch

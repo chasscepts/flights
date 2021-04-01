@@ -5,7 +5,7 @@ describe SiteParser do
   let(:host) { 'http://www.example.com' }
   let(:parser) { SiteParser.new(url, 'p') }
 
-  context 'sections' do
+  context 'jobs' do
     describe 'when network call fails' do
       let(:url) { "#{host}/fail" }
 
