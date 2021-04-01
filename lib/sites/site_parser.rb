@@ -10,13 +10,13 @@ class SiteParser
     @selector = selector
   end
 
-  def jobs
-    if @jobs.nil?
-      @jobs = []
+  def flights
+    if @flights.nil?
+      @flights = []
       sections = fetch
-      sections.each { |section| @jobs << parse(section) }
+      sections.each { |section| @flights << parse(section) }
     end
-    @jobs
+    @flights
   end
 
   def parse(html); end
