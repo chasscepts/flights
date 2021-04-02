@@ -14,7 +14,7 @@ module SampleHtml
               <div class="owl-wrapper">
                 <div class="owl-item">
                   <a class="top_dest_form flight-wrap">
-                    <form target="_blank" action="https://travel.konga.com/index.php/general/pre_flight_search" method="post"  id="top_city3">
+                    <form target="_blank" method="post"  id="top_city3">
                       <input type="hidden" name="trip_type_tf" value="oneway">
                       <input type="hidden" name="from_tf" value="Lagos, Nigeria,Murtala Muhammed Airport (LOS)">
                       <input type="hidden" name="from_loc_id_tf" value="4267">
@@ -63,19 +63,5 @@ module SampleHtml
         </div>
       </div>
     </main>
-  }.freeze
-
-  KONGA_FLIGHTS = %{
-    <div>
-      <div id="deal2">
-        <div class="flight-wrap>
-          <form target="_blank" action="https://travel.konga.com/index.php/general/pre_flight_search" method="post"><input name="aa"></form>
-          <form target="_blank" action="https://travel.konga.com/index.php/general/pre_flight_search" method="post"></form>
-          <form target="_blank" action="https://travel.konga.com/index.php/general/pre_flight_search" method="post"></form>
-          <form target="_blank" action="https://travel.konga.com/index.php/general/pre_flight_search" method="post"></form>
-          <form target="_blank" action="https://travel.konga.com/index.php/general/pre_flight_search" method="post"></form>
-        </div>
-      </div>
-    </div>
   }.freeze
 end

@@ -7,7 +7,7 @@ describe KongaFlights do
   context 'parse' do
     let(:site) { KongaFlights.new }
     let(:sample) { SampleHtml::KONGA }
-    let(:flight) { FlightDeal.new('Lagos', 'Abuja', 24245, '12-02-2021') }
+    let(:flight) { FlightDeal.new('Lagos', 'Abuja', 24_245, '12-02-2021') }
 
     include_examples 'correctly parses flights'
   end
