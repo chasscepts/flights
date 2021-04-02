@@ -1,7 +1,5 @@
 #! /usr/bin/env ruby
 
-require_relative '../lib/sites/konga_flights'
+require_relative '../lib/time_utils'
 
-konga = KongaFlights.new
-
-p konga.flights
+puts TimeUtils.today

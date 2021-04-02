@@ -1,5 +1,6 @@
 require_relative './site_parser'
 require_relative '../flight'
+require_relative '../flight_date'
 require_relative '../time_utils'
 
 class KongaFlights < SiteParser
@@ -17,6 +18,12 @@ class KongaFlights < SiteParser
     price = doc.at_css('.desplname > div:first-child > div:nth-child(2) > h5').content
     price = price.delete('^0-9').to_i
     date = doc.at_css('input[name="depature_tf"]')[:value]
+
+    begin
+      date = FlightDate.new(Date.parse(date, '%d-%m-%y'))
+    rescue ArgumentError
+      date = Time.now.to_date
+    end
 
     FlightDeal.new(from_to[0], from_to[1], price, date)
   end

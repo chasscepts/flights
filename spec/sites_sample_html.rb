@@ -64,4 +64,65 @@ module SampleHtml
       </div>
     </main>
   }.freeze
+
+  WAKANOW = %{
+    <owl-carousel-o class="flight-deals ng-star-inserted" _nghost-tmr-c95="">
+      <div class="owl-carousel owl-theme owl-loaded owl-responsive owl-drag">
+        <div class="owl-stage-outer ng-star-inserted">
+          <owl-stage class="ng-tns-c96-1">
+            <div class="ng-tns-c96-1">
+              <div class="owl-stage ng-tns-c96-1">
+                <div class="owl-item ng-tns-c96-1 ng-trigger ng-trigger-autoHeight active ng-star-inserted">
+                  <div class="item ng-star-inserted" style="">
+                    <app-flight-card _nghost-tmr-c124="">
+                      <a href="javascript:void(0);">
+                        <div class="card flight-deal-cards">
+                          <img alt="" class="img-fluid mx-auto d-block bg-image-fixed ng-star-inserted">
+                          <div class="flight-location-overlay">
+                            <div class="media text-white">
+                              <div class="media-body">
+                                <p class="mb-1">Lagos
+                                  <i class="mdi mdi-arrow-right mx-1"></i>
+                                  <span class="font-weight-medium location">London</span>
+                                </p>
+                                <p class="font-12">Apr 15, 2021 - May 10, 2021</p>
+                              </div>
+                              <div class="ml-2">
+                                <img alt="" >
+                              </div>
+                            </div>
+                          </div>
+                          <div class="flight-paynow-overlay">
+                            <div class="media text-white">
+                              <div class="media-body">
+                                <p class="font-12 mb-1">Pay now</p>
+                                <h5 class="font-18 text-white mb-0">₦273,835</h5>
+                              </div>
+                              <div class="ml-2 ng-star-inserted">
+                                <a class="btn btn-primary">
+                                  <div class="media">
+                                    <div class="align-self-center mr-1">
+                                      <img src="assets/images/icons/paysmallsmall-white.png" alt="">
+                                    </div>
+                                    <div class="media-body">
+                                      <span class="font-12">Lock this fare</span>
+                                      <span class="d-block font-18 mb-0">₦76,673</span>
+                                    </div>
+                                  </div>
+                                </a>
+                              </div><!---->
+                            </div>
+                          </div>
+                        </div>
+                      </a>
+                    </app-flight-card>
+                  </div><!----><!---->
+                </div><!---->
+              </div><!----><!---->
+            </div>
+          </owl-stage>
+        </div>
+      </div>
+    </owl-carousel-o>
+  }
 end
