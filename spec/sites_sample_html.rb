@@ -69,7 +69,11 @@ module SampleHtml
     <div>
       <div id="deal2">
         <div class="flight-wrap>
-          <form><input name="aa"></form><form></form><form></form><form></form><form></form>
+          <form target="_blank" action="https://travel.konga.com/index.php/general/pre_flight_search" method="post"><input name="aa"></form>
+          <form target="_blank" action="https://travel.konga.com/index.php/general/pre_flight_search" method="post"></form>
+          <form target="_blank" action="https://travel.konga.com/index.php/general/pre_flight_search" method="post"></form>
+          <form target="_blank" action="https://travel.konga.com/index.php/general/pre_flight_search" method="post"></form>
+          <form target="_blank" action="https://travel.konga.com/index.php/general/pre_flight_search" method="post"></form>
         </div>
       </div>
     </div>

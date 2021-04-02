@@ -19,7 +19,9 @@ class SiteParser
     @flights
   end
 
-  def parse(html); end
+  def parse(doc)
+    doc.content
+  end
 
   private
 
