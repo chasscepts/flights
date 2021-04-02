@@ -3,11 +3,9 @@ class FlightDate
 
   def initialize(from, to = nil)
     @from = from.class == Time ? Date.new(from.year, from.month, from.day) : from
-    if to.nil?
-      @to = nil
-    else
-      @to = to.class == Time ? Date.new(to.year, to.month, to.day) : to
-    end
+    cls = to.class
+    @to = cls == Time ? Date.new(to.year, to.month, to.day) : to
+    @to = nil unless cls == Date
   end
 
   def today?

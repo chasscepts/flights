@@ -1,3 +1,5 @@
+# rubocop:disable Metrics/ModuleLength
+
 module SampleHtml
   KONGA = %{
     <main>
@@ -124,5 +126,7 @@ module SampleHtml
         </div>
       </div>
     </owl-carousel-o>
-  }
+  }.freeze
 end
+
+# rubocop:enable Metrics/ModuleLength

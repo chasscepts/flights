@@ -30,7 +30,7 @@ class WakanowFlights < SiteParser
   def to_date(string)
     begin
       date = Date.parse(string)
-    rescue => exception
+    rescue ArgumentError
       date = Time.now.to_date
     end
     date

@@ -4,7 +4,7 @@ module TimeUtils
     "#{time.day}-#{time.month}-#{time.year}"
   end
 
-  def self.fromString(string)
+  def self.from_string(string)
     begin
       date = Date.parse(string)
     rescue ArgumentError
