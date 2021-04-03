@@ -27,6 +27,10 @@ describe ArgsParser do
     expect(parser.parse(['--options', 'none', '-v'])['options']).to eq 'none'
   end
 
+  it 'adds integer keys to unnamed options' do
+    expect(parser.parse(['-v', 'ver', 'test'])[0]).to eq 'test'
+  end
+
   it 'correctly parses an array of options' do
     args = ['--options', 'none', '-v', '-cols', '4', '--rows', '4', '--mute']
     expected = { 'options' => 'none', 'v' => 'present', 'cols' => '4', 'rows' => '4', 'mute' => 'present' }
