@@ -8,4 +8,23 @@ class FlightDeal
     @date = date
     @time = time
   end
+
+  def today?
+    @date.today?
+  end
+
+  def to_s
+    unless @text
+      @text = '= = = = = = = = = = = = = = = = = = = = =',
+              '=                                        ',
+              "=  From   : #{from}",
+              "=  To     : #{to}",
+              "=  Price  : #{price}",
+              "=  Date   : #{date}",
+              "=  Today? : #{date.today? ? 'Yes' : 'No' }",
+              '=                                          ',
+              '= = = = = = = = = = = = = = = = = = = = ='
+    end
+    @text
+  end
 end
