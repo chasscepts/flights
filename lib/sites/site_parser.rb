@@ -21,11 +21,13 @@ class SiteParser
 
   def filter_by_origin(city)
     return if @flights.nil?
+
     @flights = @flights.select { |flight| flight.from == city }
   end
 
   def filter_by_destination(city)
     return if @flights.nil?
+
     @flights = @flights.select { |flight| flight.to == city }
   end
 
@@ -42,7 +44,7 @@ class SiteParser
     begin
       doc = Nokogiri::HTML(URI.open(@url))
       return doc.css(@selector)
-    rescue OpenURI::HTTPError => err
+    rescue OpenURI::HTTPError
       return []
     end
     []
@@ -60,5 +62,4 @@ class SiteParser
     end
     date
   end
-
 end

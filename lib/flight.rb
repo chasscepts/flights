@@ -14,17 +14,17 @@ class FlightDeal
   end
 
   def to_s
-    unless @text
-      @text = '= = = = = = = = = = = = = = = = = = = = =',
-              '=                                        ',
-              "=  From   : #{from}",
-              "=  To     : #{to}",
-              "=  Price  : ₦#{price.to_s.reverse.gsub(/...(?=.)/,'\&,').reverse}:00",
-              "=  Date   : #{date}",
-              "=  Today? : #{date.today? ? 'Yes' : 'No' }",
-              '=                                          ',
-              '= = = = = = = = = = = = = = = = = = = = ='
-    end
-    @text
+    @to_s ||=
+      %(
+        = = = = = = = = = = = = = = = = = = = = =
+        =
+        =  From   : #{from}
+        =  To     : #{to}
+        =  Price  : ₦#{price.to_s.reverse.gsub(/...(?=.)/, '\&,').reverse}:00
+        =  Date   : #{date}
+        =  Today? : #{date.today? ? 'Yes' : 'No'}
+        =
+        = = = = = = = = = = = = = = = = = = = = =
+      )
   end
 end

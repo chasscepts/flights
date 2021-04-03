@@ -11,11 +11,7 @@ class FlightDate
   def today?
     if @today.nil?
       now = Date.today
-      if @to.nil?
-        @today = (now <=> @from) == 0
-      else
-        @today = ((now <=> @from) >= 0 && (now <=> @to) <= 0)
-      end
+      @today = @to.nil? ? (now <=> @from).zero? : ((now <=> @from) >= 0 && (now <=> @to) <= 0)
     end
     @today
   end

@@ -5,25 +5,19 @@ class ArgsParser
 
   def parse(args)
     options = {}
-    length = args.size
     index = 0
     int_pointer = 0
-    while index < length
-      arg = args[index]
-      option = get_option(arg)
+    while index < args.size
+      option = get_option(args[index])
       index += 1
 
       if option.nil?
-        options[int_pointer] = arg
+        options[int_pointer] = args[index - 1]
         int_pointer += 1
-      elsif index < length
+      elsif index < args.size
         next_option = get_option(args[index])
-        if next_option.nil?
-          options[option] = args[index]
-          index += 1
-        else
-          options[option] = @default
-        end
+        options[option] = next_option.nil? ? args[index] : @default
+        index += 1 if next_option.nil?
       else
         options[option] = @default
       end

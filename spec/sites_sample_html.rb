@@ -80,10 +80,10 @@ module SampleHtml
             <h3>Availability</h3>
             <p style="margin-bottom: 0">Tue, 23 Feb. 2021 - Mon, 8 Mar. 2021</p>
             <div class="airline">
-              <img src="/user/profilepictureretrieve?ximageId=43235" alt="Best Deals" style="max-width:200px;max-height:70px;">
+              <img src="/user/profilepictureretrieve?ximageId=43235" alt="Best Deals">
             </div>
             <div class="booking">
-              <button type="button" onclick="searchForTopFlightDeal(203981);" name="book-now" class="btn-book">Book Now</button>
+              <button type="button" name="book-now" class="btn-book">Book Now</button>
             </div>
           </div>
         </div>

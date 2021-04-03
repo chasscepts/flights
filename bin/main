@@ -4,7 +4,6 @@ require_relative '../lib/flight_deals'
 require_relative '../lib/args_parser'
 
 def configure_options(options)
-  return if options['from'] && options['to']
   if options['from']
     options['to'] = options[0]
     options.delete(0)
@@ -31,9 +30,25 @@ def clear_terminal(lines = nil)
   lines.times { print "\e[A\e[2K" }
 end
 
+def display(filtered, pos, size)
+  puts "Your search criteria matched #{size} flight deals"
+  puts
+
+  puts "Displaying Deal number #{pos + 1}"
+  puts
+  puts filtered[pos].to_s
+  puts
+  puts 'Enter N to display next Deal' if pos + 1 < size
+  puts 'Enter P to display previous Deal' if pos.positive?
+  puts 'Enter F to display first deal'
+  puts 'Enter L to display last deal' if size > 1
+  puts "Enter a number between 1 and #{size} to display corresponding deal" if size > 1
+  puts 'Enter X to exit'
+end
+
 options = ArgsParser.new.parse(ARGV)
 
-configure_options(options)
+configure_options(options) unless options['from'] && options['to']
 
 sites = FlightDeals.sites
 
@@ -47,21 +62,17 @@ filtered = deals.select { |deal| deal.from == from }
 
 to = options['to'] || options[0]
 
-unless to.nil?
-  filtered = filtered.select { |deal| deal.to == to }
-end
+filtered = filtered.select { |deal| deal.to == to } unless to.nil?
 
-if options['today']
-  filtered = filtered.select { |deal| deal.today? }
-end
+filtered = filtered.select(&:today?) if options['today']
 
 size = filtered.size
 
-if size == 0
+if size.zero?
   puts 'We could not find any deal that match your search criteria'
   puts
-  puts "Yours options are:"
-  puts "#{options}"
+  puts 'Yours options are:'
+  puts options.to_s
 elsif size == 1
   puts 'Exactly one item matches your search criteria'
   puts
@@ -72,38 +83,26 @@ else
   loop do
     clear_terminal
 
-    puts "Your search criteria matched #{size} flight deals"
-    puts
-
-    puts "Displaying Deal number #{pos + 1}"
-    puts
-    puts filtered[pos].to_s
-    puts
-    puts 'Enter N to display next Deal' if pos + 1 < size
-    puts 'Enter P to display previous Deal' if pos > 0
-    puts 'Enter F to display first deal'
-    puts 'Enter L to display last deal' if size > 1
-    puts "Enter a number between 1 and #{size} to display corresponding deal" if size > 1
-    puts 'Enter X to exit'
+    display(filtered, pos, size)
 
     begin
       command = gets.chomp.downcase
-    case command
-    when 'n'
-      temp = pos + 1
-      pos = temp if temp < size
-    when 'p'
-      pos -= 1 unless pos == 0
-    when 'f'
-      pos = 0
-    when 'l'
-      pos = size - 1 unless size == 1
-    when 'x'
-      exit
-    else
-      idx = command.to_i - 1
-      pos = idx if idx >= 0 && idx < size
-    end
+      case command
+      when 'n'
+        temp = pos + 1
+        pos = temp if temp < size
+      when 'p'
+        pos -= 1 unless pos.zero?
+      when 'f'
+        pos = 0
+      when 'l'
+        pos = size - 1 unless size == 1
+      when 'x'
+        exit
+      else
+        idx = command.to_i - 1
+        pos = idx if idx >= 0 && idx < size
+      end
     rescue Interrupt
       exit
     end
