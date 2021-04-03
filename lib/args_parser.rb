@@ -7,12 +7,16 @@ class ArgsParser
     options = {}
     length = args.size
     index = 0
+    int_pointer = 0
     while index < length
-      option = get_option(args[index])
+      arg = args[index]
+      option = get_option(arg)
       index += 1
-      next if option.nil?
 
-      if index < length
+      if option.nil?
+        options[int_pointer] = arg
+        int_pointer += 1
+      elsif index < length
         next_option = get_option(args[index])
         if next_option.nil?
           options[option] = args[index]
