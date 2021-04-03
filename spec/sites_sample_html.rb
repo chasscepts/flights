@@ -67,6 +67,30 @@ module SampleHtml
     </main>
   }.freeze
 
+  TRAVEL_BETA = %{
+    <section class="regular slider hide" id="flightDealSlider">
+      <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="FirstBox">
+          <div class="top head" style="background-color: #02217e; border-radius: 5px;">
+            <p class="flight-head">Lagos to Cape Town</p>
+            <p class="return"><small>(ROUND TRIP / ECONOMY)</small></p>
+            <p class="flight-fee"><span class="super">₦</span>221,730</p>
+          </div>
+          <div class="contents details">
+            <h3>Availability</h3>
+            <p style="margin-bottom: 0">Tue, 23 Feb. 2021 - Mon, 8 Mar. 2021</p>
+            <div class="airline">
+              <img src="/user/profilepictureretrieve?ximageId=43235" alt="Best Deals" style="max-width:200px;max-height:70px;">
+            </div>
+            <div class="booking">
+              <button type="button" onclick="searchForTopFlightDeal(203981);" name="book-now" class="btn-book">Book Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  }.freeze
+
   WAKANOW = %{
     <owl-carousel-o class="flight-deals ng-star-inserted" _nghost-tmr-c95="">
       <div class="owl-carousel owl-theme owl-loaded owl-responsive owl-drag">
