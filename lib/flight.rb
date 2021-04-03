@@ -19,7 +19,7 @@ class FlightDeal
               '=                                        ',
               "=  From   : #{from}",
               "=  To     : #{to}",
-              "=  Price  : #{price}",
+              "=  Price  : ₦#{price.to_s.reverse.gsub(/...(?=.)/,'\&,').reverse}:00",
               "=  Date   : #{date}",
               "=  Today? : #{date.today? ? 'Yes' : 'No' }",
               '=                                          ',

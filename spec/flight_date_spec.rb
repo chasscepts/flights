@@ -1,5 +1,4 @@
 require_relative '../lib/flight_date'
-require 'date'
 
 describe FlightDate do
   context 'today?' do
