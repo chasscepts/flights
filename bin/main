@@ -1,5 +1,21 @@
 #! /usr/bin/env ruby
 
-require_relative '../lib/time_utils'
+require_relative '../lib/flight_deals'
+require_relative '../lib/args_parser'
+require_relative '../lib/sites/travel_beta_flights'
 
-puts TimeUtils.today
+require 'open-uri'
+
+#options = ArgsParser.new.parse(ARGV)
+
+#sites = FlightDeals.sites
+
+#deals = []
+
+#sites.each { |site| deals += site.flights }
+
+#puts deals.size
+
+deals = TravelBetaFlights.new.flights
+
+p deals.size

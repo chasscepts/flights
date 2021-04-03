@@ -24,15 +24,4 @@ class WakanowFlights < SiteParser
 
     FlightDeal.new(from_to[0], from_to[1], price, date)
   end
-
-  private
-
-  def to_date(string)
-    begin
-      date = Date.parse(string)
-    rescue ArgumentError
-      date = Time.now.to_date
-    end
-    date
-  end
 end
