@@ -87,7 +87,7 @@ else
     display(filtered, pos, size)
 
     begin
-      command = gets.chomp.downcase
+      command = STDIN.gets.chomp.downcase
       case command
       when 'n'
         temp = pos + 1
