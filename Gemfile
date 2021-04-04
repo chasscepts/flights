@@ -1,5 +1,10 @@
 source 'https://rubygems.org'
 
-gem 'rspec', '~>3.9'
+group :test do
+  gem 'rspec', '~>3.9'
+  gem 'webmock'
+end
 
-gem 'rubocop', '~>0.81.0'
+group :development do
+  gem 'rubocop', '~>0.81.0'
+end
