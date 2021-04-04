@@ -1,12 +1,12 @@
 # Flights
 
-A command line utility application written in Ruby to scrape selected website for the best flight deals of the day.
+A command-line utility application written in Ruby to scrape select webpages for the best flight deals of the day.
 
 ![screenshot](./app_screenshot.png)
 
 ## How it works
 
-Flights is highly configurable through command line arguments. It uses passed in options such as Location and Destination to filter search result scraped from web pages. The result is  sorted in ascending order of price, and user can navigate between them by issuing pre-connfigured commands.
+The application is highly configurable through command-line arguments. It uses passed-in options such as Location and Destination to filter search results scraped from web pages. The result is sorted in ascending order of price, and the user can navigate between them by issuing pre-configured commands.
 
 ## Built With
 
@@ -20,7 +20,7 @@ Requirements:
 - JRuby >= 9.2.0.0
 - Nokogiri
 
-Clone the repository to your local machine and run the application from it's root directory
+Clone the repository to your local machine and run the application from its root directory
 
 ```bash
 
@@ -33,17 +33,17 @@ Clone the repository to your local machine and run the application from it's roo
 
 ## Command Line options
 
-Flights currently accepts the following command line arguments
+Flights currently accept the following command-line arguments
 
-- `-from`  -  User Location. Searches will include only flights from location.
+- `-from`  -  User Location. Search result will include only flights from the given location.
 - `-to`   -  Flight Destination.
 - `-today`  -  Include only today's flights
 
 >Examples
 ```bash
 
-  bin/main Lagos Abuja # Flights from Lagos to Abuja
-  bin/main Lagos Abuja -today # Flights from Lagos to Abuja with take-off date of today
+  bin/main Lagos Abuja # Search for flights from Lagos to Abuja
+  bin/main Lagos Abuja -today # Search for flights from Lagos to Abuja with a take-off date of today
   bin/main -from Lagos -to Abuja -today # Same as above
   bin/main Abuja -today # Same as above (from defaults to Lagos)
 
