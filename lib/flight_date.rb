@@ -2,10 +2,9 @@ class FlightDate
   attr_reader :from, :to
 
   def initialize(from, to = nil)
-    @from = from.class == Time ? Date.new(from.year, from.month, from.day) : from
-    cls = to.class
-    @to = cls == Time ? Date.new(to.year, to.month, to.day) : to
-    @to = nil unless cls == Date
+    @from = @from.instance_of?(Time) ? Date.new(from.year, from.month, from.day) : from
+    @to = to.instance_of?(Time) ? Date.new(to.year, to.month, to.day) : to
+    @to = nil unless @to.instance_of?(Date)
   end
 
   def today?

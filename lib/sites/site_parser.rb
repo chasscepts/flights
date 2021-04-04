@@ -42,7 +42,7 @@ class SiteParser
     return [] if @url.nil?
 
     begin
-      doc = Nokogiri::HTML(URI.open(@url))
+      doc = Nokogiri::HTML(URI.parse(@url).open)
       return doc.css(@selector)
     rescue OpenURI::HTTPError
       return []

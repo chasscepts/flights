@@ -14,7 +14,7 @@ class WakanowFlights < SiteParser
 
   def parse(doc)
     para = doc.at_css('.flight-location-overlay .media-body > p:first-child')
-    from_to = para.text.split(' ').map(&:strip)
+    from_to = para.text.split.map(&:strip)
     date_range = doc.at_css('.flight-location-overlay .media-body > p:nth-child(2)').text
     date_from_to = date_range.split(' - ').map { |d| to_date d }
 
