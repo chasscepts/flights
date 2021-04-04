@@ -33,7 +33,8 @@ end
 def display(filtered, pos, size)
   puts "Your search criteria matched #{size} flight deals"
   puts
-
+  puts 'Cheapest Deals are displayed first'
+  puts
   puts "Displaying Deal number #{pos + 1}"
   puts
   puts filtered[pos].to_s
