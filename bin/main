@@ -87,7 +87,7 @@ else
     display(filtered, pos, size)
 
     begin
-      command = STDIN.gets.chomp.downcase
+      command = $stdin.gets.chomp.downcase
       case command
       when 'n'
         temp = pos + 1
