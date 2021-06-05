@@ -1,0 +1,111 @@
+#! /usr/bin/env ruby
+
+require_relative '../lib/flight_deals'
+require_relative '../lib/args_parser'
+
+def configure_options(options)
+  if options['from']
+    options['to'] = options[0]
+    options.delete(0)
+  elsif options['to']
+    options['from'] = options[0] || 'Lagos'
+    options.delete(0)
+  elsif options[0] && options[1]
+    options['from'] = options[0]
+    options['to'] = options[1]
+    options.delete(0)
+    options.delete(1)
+  else
+    options['to'] = options[0]
+    options['from'] = 'Lagos'
+    options.delete(0)
+  end
+end
+
+def clear_terminal(lines = nil)
+  if lines.nil?
+    system('clear') || system('cls')
+    return
+  end
+  lines.times { print "\e[A\e[2K" }
+end
+
+def display(filtered, pos, size)
+  puts "Your search criteria matched #{size} flight deals"
+  puts
+  puts 'Cheapest Deals are displayed first'
+  puts
+  puts "Displaying Deal number #{pos + 1}"
+  puts
+  puts filtered[pos].to_s
+  puts
+  puts 'Enter N to display next Deal' if pos + 1 < size
+  puts 'Enter P to display previous Deal' if pos.positive?
+  puts 'Enter F to display first deal'
+  puts 'Enter L to display last deal' if size > 1
+  puts "Enter a number between 1 and #{size} to display corresponding deal" if size > 1
+  puts 'Enter X to exit'
+end
+
+options = ArgsParser.new.parse(ARGV)
+
+configure_options(options) unless options['from'] && options['to']
+
+sites = FlightDeals.sites
+
+deals = []
+
+sites.each { |site| deals += site.flights }
+
+from = options['from'] || 'Lagos'
+
+filtered = deals.select { |deal| deal.from == from }
+
+to = options['to'] || options[0]
+
+filtered = filtered.select { |deal| deal.to == to } unless to.nil?
+
+filtered = filtered.select(&:today?) if options['today']
+
+size = filtered.size
+
+if size.zero?
+  puts 'We could not find any deal that match your search criteria'
+  puts
+  puts 'Yours options are:'
+  puts options.to_s
+elsif size == 1
+  puts 'Exactly one item matches your search criteria'
+  puts
+  puts filtered[0].to_s
+else
+  pos = 0
+
+  loop do
+    clear_terminal
+
+    display(filtered, pos, size)
+
+    begin
+      command = $stdin.gets.chomp.downcase
+      case command
+      when 'n'
+        temp = pos + 1
+        pos = temp if temp < size
+      when 'p'
+        pos -= 1 unless pos.zero?
+      when 'f'
+        pos = 0
+      when 'l'
+        pos = size - 1 unless size == 1
+      when 'x'
+        exit
+      else
+        idx = command.to_i - 1
+        pos = idx if idx >= 0 && idx < size
+      end
+    rescue Interrupt
+      exit
+    end
+  end
+end
