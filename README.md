@@ -1,12 +1,12 @@
 # Flights
 
-A command-line utility application written in Ruby to scrape select webpages for the best flight deals of the day.
+Flights is a command-line utility application written in Ruby to scrape selected web pages for the best flight deals of the day. It helps you avoid browsing countless websites for flight information by providing a simple command-line interface that will curate the best deals for you.
 
 ![screenshot](./app_screenshot.png)
 
 ## How it works
 
-The application is highly configurable through command-line arguments. It uses passed-in options such as Location and Destination to filter search results scraped from web pages. The result is sorted in ascending order of price, and the user can navigate between them by issuing pre-configured commands.
+The application is highly configurable through command-line arguments. It uses passed-in options such as Location and Destination to filter search results scraped from web pages. The result is sorted in ascending order of price before display, and the user can navigate between them by issuing pre-configured commands.
 
 ## Built With
 
@@ -26,7 +26,7 @@ Clone the repository to your local machine and run the application from its root
 
   $ git clone git@github.com:chasscepts/flights.git
   $ cd <flights>
-  $ bundle install # Only if you are developing and want to run tests and linters
+  $ bundle install
   $ bin/main
 
 ```
